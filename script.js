@@ -18,7 +18,7 @@ $(document).ready(function () {
     var fileInput = document.getElementById("imageInput");
     var formData = new FormData();
     formData.append("image", fileInput.files[0]);
-    processImage(formData);
+    processImage(formData, "multipart/form-data");
   });
 
   captureButton.addEventListener("click", function () {
@@ -26,17 +26,17 @@ $(document).ready(function () {
     canvas.toBlob(function (blob) {
       var formData = new FormData();
       formData.append("image", blob);
-      processImage(formData);
+      processImage(formData, "multipart/form-data");
     });
   });
 
   //
-  function processImage(formData) {
-    var jsonData = {};
-    formData.forEach(function (value, key) {
-      jsonData[key] = value;
-    });
-    var jsonString = JSON.stringify(jsonData);
+  function processImage(formData, contentType) {
+    // var jsonData = {};
+    // formData.forEach(function (value, key) {
+    //   jsonData[key] = value;
+    // });
+    // var jsonString = JSON.stringify(jsonData);
 
     $.ajax({
       url: "https://cv-instance-analyseimg-northeur.cognitiveservices.azure.com/computervision/imageanalysis:analyze?api-version=2024-02-01&features=people&model-version=latest&language=en&gender-neutral-caption=False",
@@ -47,7 +47,9 @@ $(document).ready(function () {
       //   data: JSON.stringify({
       //     url: "https://raw.githubusercontent.com/Azure/azure-sdk-for-java/main/sdk/vision/azure-ai-vision-imageanalysis/src/samples/java/com/azure/ai/vision/imageanalysis/sample.jpg",
       //   }),
-      contentType: "multipart/form-data",
+      //   contentType: "multipart/form-data",
+      contentType: contentType,
+
       headers: {
         "Ocp-Apim-Subscription-Key": "169ba26709814440839c99da449b5421",
       },
