@@ -41,7 +41,7 @@ $(document).ready(function () {
     $.ajax({
       url: "https://cv-instance-analyseimg-northeur.cognitiveservices.azure.com/computervision/imageanalysis:analyze?api-version=2024-02-01&features=people&model-version=latest&language=en&gender-neutral-caption=False",
       type: "POST",
-      data: jsonString,
+      data: formData,
       //   data: JSON.stringify(formData),
       //   data: formData,
       //   data: JSON.stringify({
