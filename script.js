@@ -35,10 +35,10 @@ $(document).ready(function () {
     $.ajax({
       url: "https://cv-instance-analyseimg-northeur.cognitiveservices.azure.com/computervision/imageanalysis:analyze?api-version=2024-02-01&features=people&model-version=latest&language=en&gender-neutral-caption=False",
       type: "POST",
-      //   data: formData,
-      data: JSON.stringify({
-        url: "https://raw.githubusercontent.com/Azure/azure-sdk-for-java/main/sdk/vision/azure-ai-vision-imageanalysis/src/samples/java/com/azure/ai/vision/imageanalysis/sample.jpg",
-      }),
+      data: formData,
+      //   data: JSON.stringify({
+      //     url: "https://raw.githubusercontent.com/Azure/azure-sdk-for-java/main/sdk/vision/azure-ai-vision-imageanalysis/src/samples/java/com/azure/ai/vision/imageanalysis/sample.jpg",
+      //   }),
       contentType: "application/json",
       headers: {
         "Ocp-Apim-Subscription-Key": "169ba26709814440839c99da449b5421",
