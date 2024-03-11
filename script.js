@@ -70,8 +70,10 @@ $(document).ready(function () {
             '<h2 class="result-heading">No live person detected in the video</h2>';
         }
       },
-      error: function () {
-        var resultContainer = document.getElementById("resultContainer");
+      error: function (xhr, status, error) {
+        console.error("An error occurred while processing the image:", error);
+        //   error: function () {
+        //     var resultContainer = document.getElementById("resultContainer");
         var resultHeading = document.getElementById("resultHeading");
         resultContainer.innerHTML =
           "<p>An error occurred while processing the image.</p>";
